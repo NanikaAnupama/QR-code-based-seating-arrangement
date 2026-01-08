@@ -4,6 +4,18 @@ const searchBtn = document.getElementById("searchBtn");
 const resultsSection = document.getElementById("results");
 const suggestionsSection = document.getElementById("suggestions");
 
+const input = document.getElementById("searchInput");
+
+input.addEventListener("focus", () => {
+  setTimeout(() => {
+    input.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }, 300);
+});
+
+
 // Search functionality
 function searchGuest(query) {
   if (!query.trim()) {
