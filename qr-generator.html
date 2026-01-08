@@ -238,7 +238,7 @@
 
       function downloadQR() {
         const url = document.getElementById("urlInput").value.trim();
-        
+
         if (!url) {
           alert("Please generate a QR code first");
           return;
@@ -251,8 +251,8 @@
 
         // Fetch the image and convert to blob for download
         fetch(qrApiUrl)
-          .then(response => response.blob())
-          .then(blob => {
+          .then((response) => response.blob())
+          .then((blob) => {
             const blobUrl = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = blobUrl;
@@ -262,10 +262,12 @@
             document.body.removeChild(link);
             URL.revokeObjectURL(blobUrl);
           })
-          .catch(error => {
+          .catch((error) => {
             // Fallback: open in new tab if fetch fails
-            window.open(qrApiUrl, '_blank');
-            alert("If download didn't start, right-click the QR code image in the new tab and select 'Save image as...'");
+            window.open(qrApiUrl, "_blank");
+            alert(
+              "If download didn't start, right-click the QR code image in the new tab and select 'Save image as...'"
+            );
           });
       }
 
