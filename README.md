@@ -1,0 +1,1 @@
+# QR-code-based-seating-arrangement
