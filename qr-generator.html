@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate QR Code - Seating Arrangement</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .qr-container {
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .qr-code {
+        background: white;
+        padding: 20px;
+        border-radius: 16px;
+        display: inline-block;
+        margin: 20px 0;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .qr-code img {
+        display: block;
+      }
+
+      .url-display {
+        background: var(--bg-color);
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin: 20px 0;
+        word-break: break-all;
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .instructions {
+        background: var(--bg-color);
+        border-radius: 16px;
+        padding: 25px;
+        margin-top: 30px;
+        text-align: left;
+      }
+
+      .instructions h3 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .instructions ol {
+        padding-left: 20px;
+        color: var(--text-secondary);
+        line-height: 1.8;
+      }
+
+      .instructions li {
+        margin-bottom: 10px;
+      }
+
+      .instructions code {
+        background: var(--card-bg);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      .download-btn {
+        background: var(--success-color);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 15px;
+      }
+
+      .download-btn:hover {
+        background: #059669;
+        transform: scale(1.05);
+      }
+
+      .input-group {
+        margin: 20px 0;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .input-group input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+
+      .generate-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .generate-btn:hover {
+        background: var(--primary-dark);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <span class="icon">📱</span>
+        </div>
+        <h1>QR Code Generator</h1>
+        <p class="subtitle">Create a QR code for your seating arrangement</p>
+      </header>
+
+      <main>
+        <div class="qr-container">
+          <div class="input-group">
+            <label for="urlInput">Enter your hosted URL:</label>
+            <input
+              type="url"
+              id="urlInput"
+              placeholder="https://yourusername.github.io/your-repo-name/"
+              value=""
+            />
+          </div>
+
+          <button class="generate-btn" onclick="generateQR()">
+            Generate QR Code
+          </button>
+
+          <div id="qrResult" style="display: none">
+            <div class="qr-code">
+              <img id="qrImage" src="" alt="QR Code" width="250" height="250" />
+            </div>
+
+            <div class="url-display" id="urlDisplay"></div>
+
+            <button class="download-btn" onclick="downloadQR()">
+              📥 Download QR Code
+            </button>
+          </div>
+
+          <div class="instructions">
+            <h3>📋 How to Deploy & Get Your URL</h3>
+            <ol>
+              <li>Create a GitHub account if you don't have one</li>
+              <li>
+                Create a new repository named <code>seating-arrangement</code>
+              </li>
+              <li>Upload all files from this project to the repository</li>
+              <li>Go to <strong>Settings → Pages</strong></li>
+              <li>
+                Under "Source", select <code>main</code> branch and click Save
+              </li>
+              <li>Wait 2-3 minutes for deployment</li>
+              <li>
+                Your URL will be:
+                <code>https://yourusername.github.io/seating-arrangement/</code>
+              </li>
+              <li>Enter that URL above and generate your QR code!</li>
+            </ol>
+          </div>
+
+          <a href="index.html" class="back-link">← Back to Seating Page</a>
+        </div>
+      </main>
+
+      <footer>
+        <p>Print this QR code and display it at your event</p>
+      </footer>
+    </div>
+
+    <script>
+      function generateQR() {
+        const url = document.getElementById("urlInput").value.trim();
+
+        if (!url) {
+          alert("Please enter a valid URL");
+          return;
+        }
+
+        // Using QR Server API (free, no API key needed)
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
+          url
+        )}`;
+
+        document.getElementById("qrImage").src = qrApiUrl;
+        document.getElementById("urlDisplay").textContent = url;
+        document.getElementById("qrResult").style.display = "block";
+      }
+
+      function downloadQR() {
+        const url = document.getElementById("urlInput").value.trim();
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(
+          url
+        )}&format=png`;
+
+        // Create a temporary link to download
+        const link = document.createElement("a");
+        link.href = qrApiUrl;
+        link.download = "seating-qr-code.png";
+        link.target = "_blank";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      // Auto-generate if URL is already filled
+      window.onload = function () {
+        const url = document.getElementById("urlInput").value;
+        if (url) {
+          generateQR();
+        }
+      };
+    </script>
+  </body>
+</html>

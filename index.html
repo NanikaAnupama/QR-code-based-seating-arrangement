@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Your Seat</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <span class="icon">🎉</span>
+        </div>
+        <h1>Welcome to</h1>
+        <h2 class="event-name">Imperial Excellence Awards & Gala 2025</h2>
+        <p class="subtitle">Find your seat in seconds</p>
+      </header>
+
+      <main>
+        <div class="search-section">
+          <div class="search-box">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Enter your name..."
+              autocomplete="off"
+              autofocus
+            />
+            <button id="searchBtn" class="search-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+            </button>
+          </div>
+          <p class="hint">Type your name to find your table and seat</p>
+        </div>
+
+        <div id="results" class="results-section hidden">
+          <!-- Results will be displayed here -->
+        </div>
+
+        <div id="suggestions" class="suggestions-section hidden">
+          <!-- Auto-suggestions will appear here -->
+        </div>
+      </main>
+
+      <footer>
+        <p>Scan the QR code to access this page anytime</p>
+      </footer>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
