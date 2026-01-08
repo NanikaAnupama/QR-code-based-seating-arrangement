@@ -229,25 +229,44 @@
           url
         )}`;
 
-        document.getElementById("qrImage").src = qrApiUrl;
+        const img = document.getElementById("qrImage");
+        img.crossOrigin = "anonymous";
+        img.src = qrApiUrl;
         document.getElementById("urlDisplay").textContent = url;
         document.getElementById("qrResult").style.display = "block";
       }
 
       function downloadQR() {
         const url = document.getElementById("urlInput").value.trim();
+        
+        if (!url) {
+          alert("Please generate a QR code first");
+          return;
+        }
+
+        // Create a higher resolution QR code for download
         const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(
           url
         )}&format=png`;
 
-        // Create a temporary link to download
-        const link = document.createElement("a");
-        link.href = qrApiUrl;
-        link.download = "seating-qr-code.png";
-        link.target = "_blank";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // Fetch the image and convert to blob for download
+        fetch(qrApiUrl)
+          .then(response => response.blob())
+          .then(blob => {
+            const blobUrl = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = blobUrl;
+            link.download = "seating-qr-code.png";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+          })
+          .catch(error => {
+            // Fallback: open in new tab if fetch fails
+            window.open(qrApiUrl, '_blank');
+            alert("If download didn't start, right-click the QR code image in the new tab and select 'Save image as...'");
+          });
       }
 
       // Auto-generate if URL is already filled
