@@ -428,22 +428,147 @@ footer {
   display: none !important;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
+/* ========== RESPONSIVE DESIGN - Mobile First ========== */
+
+/* Extra Small Devices (phones in portrait, less than 360px) */
+@media (max-width: 359px) {
+  .container {
+    padding: 10px;
+  }
+
   header {
-    padding: 30px 15px;
+    padding: 20px 10px;
   }
 
   header h1 {
-    font-size: 2rem;
+    font-size: 1rem;
+  }
+
+  header .event-name {
+    font-size: 1.2rem;
   }
 
   .logo {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    margin-top: 12px;
   }
 
   main {
-    padding: 25px 15px;
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .search-box {
+    padding: 6px;
+    gap: 8px;
+  }
+
+  .search-box input {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .search-btn {
+    padding: 12px 16px;
+  }
+
+  .hint {
+    font-size: 0.75rem;
+  }
+
+  .result-card {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .result-card .guest-name {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+  }
+
+  .result-details {
+    gap: 25px;
+  }
+
+  .detail-label {
+    font-size: 0.7rem;
+  }
+
+  .detail-value {
+    font-size: 1.8rem;
+  }
+
+  .suggestion-item {
+    padding: 12px 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .suggestion-table {
+    font-size: 0.75rem;
+  }
+
+  footer {
+    padding: 15px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Small Devices (phones in portrait, 360px to 480px) */
+@media (min-width: 360px) and (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  header {
+    padding: 25px 15px 20px;
+  }
+
+  header h1 {
+    font-size: 1.1rem;
+  }
+
+  header .event-name {
+    font-size: 1.35rem;
+  }
+
+  .logo {
+    font-size: 2.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-top: 15px;
+  }
+
+  main {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .search-box input {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .search-btn {
+    padding: 14px 18px;
+    min-width: 52px;
+    min-height: 52px;
+  }
+
+  .result-card {
+    padding: 25px 20px;
+  }
+
+  .result-card .guest-name {
+    font-size: 1.2rem;
   }
 
   .result-details {
@@ -454,8 +579,296 @@ footer {
     font-size: 2rem;
   }
 
+  .suggestion-item {
+    padding: 14px 16px;
+  }
+
+  footer {
+    padding: 20px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Medium Devices (tablets in portrait, large phones in landscape, 481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 20px;
+    max-width: 550px;
+  }
+
+  header {
+    padding: 35px 20px 25px;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  header .event-name {
+    font-size: 1.5rem;
+  }
+
+  .logo {
+    font-size: 3.2rem;
+  }
+
+  main {
+    padding: 28px 24px;
+    max-width: 100%;
+  }
+
+  .search-box input {
+    padding: 16px 20px;
+    font-size: 1rem;
+  }
+
+  .search-btn {
+    padding: 16px 22px;
+    min-width: 56px;
+    min-height: 56px;
+  }
+
+  .result-card {
+    padding: 28px 25px;
+  }
+
   .result-card .guest-name {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
+  }
+
+  .detail-value {
+    font-size: 2.2rem;
+  }
+}
+
+/* Large Devices (tablets in landscape, small laptops, 769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 30px;
+    max-width: 600px;
+  }
+
+  header {
+    padding: 45px 25px 30px;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  header .event-name {
+    font-size: 1.7rem;
+  }
+
+  .logo {
+    font-size: 3.5rem;
+  }
+
+  main {
+    padding: 32px 28px;
+    max-width: 450px;
+  }
+
+  .search-btn {
+    min-width: 58px;
+    min-height: 58px;
+  }
+
+  .result-card .guest-name {
+    font-size: 1.45rem;
+  }
+
+  .detail-value {
+    font-size: 2.4rem;
+  }
+}
+
+/* Extra Large Devices (desktops, 1025px to 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    padding: 40px;
+    max-width: 650px;
+  }
+
+  header {
+    padding: 50px 30px 35px;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  header .event-name {
+    font-size: 1.85rem;
+  }
+
+  .logo {
+    font-size: 3.8rem;
+  }
+
+  main {
+    padding: 35px 30px;
+    max-width: 480px;
+  }
+
+  .result-card .guest-name {
+    font-size: 1.55rem;
+  }
+
+  .detail-value {
+    font-size: 2.6rem;
+  }
+}
+
+/* Ultra Wide Devices (large desktops, monitors, 1441px and above) */
+@media (min-width: 1441px) {
+  .container {
+    padding: 50px;
+    max-width: 700px;
+  }
+
+  header {
+    padding: 60px 40px 40px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header .event-name {
+    font-size: 2rem;
+  }
+
+  .logo {
+    font-size: 4rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin-top: 25px;
+  }
+
+  main {
+    padding: 40px 35px;
+    max-width: 500px;
+    border-radius: 24px;
+  }
+
+  .search-box {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .search-box input {
+    padding: 18px 22px;
+    font-size: 1.05rem;
+  }
+
+  .search-btn {
+    padding: 18px 24px;
+    border-radius: 14px;
+    min-width: 62px;
+    min-height: 62px;
+  }
+
+  .result-card {
+    padding: 35px;
+    border-radius: 24px;
+  }
+
+  .result-card .guest-name {
+    font-size: 1.65rem;
+  }
+
+  .detail-value {
+    font-size: 2.8rem;
+  }
+
+  .suggestion-item {
+    padding: 18px 22px;
+  }
+
+  footer {
+    padding: 30px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .container {
+    justify-content: flex-start;
+    padding-top: 10px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  header .event-name {
+    font-size: 1.1rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+    margin-top: 8px;
+  }
+
+  main {
+    padding: 18px;
+  }
+
+  .result-card {
+    padding: 18px;
+  }
+
+  .result-card .guest-name {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+
+  .detail-value {
+    font-size: 1.6rem;
+  }
+
+  footer {
+    padding: 10px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .search-btn {
+    min-width: 52px;
+    min-height: 52px;
+  }
+
+  .suggestion-item {
+    min-height: 48px;
+  }
+
+  .search-btn:hover {
+    transform: none;
+  }
+
+  .result-card:hover {
+    transform: none;
+  }
+
+  .search-btn:active {
+    transform: scale(0.95);
+    background: var(--primary-dark);
   }
 }
 

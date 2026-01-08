@@ -140,10 +140,114 @@
         cursor: pointer;
         transition: all 0.3s ease;
         width: 100%;
+        min-height: 52px;
       }
 
       .generate-btn:hover {
         background: var(--primary-dark);
+      }
+
+      /* Responsive styles for QR generator */
+      @media (max-width: 359px) {
+        .qr-container {
+          padding: 20px 10px;
+        }
+
+        .qr-code {
+          padding: 12px;
+        }
+
+        .qr-code img {
+          width: 180px;
+          height: 180px;
+        }
+
+        .input-group input {
+          padding: 12px;
+          font-size: 0.9rem;
+        }
+
+        .generate-btn,
+        .download-btn {
+          padding: 12px 20px;
+          font-size: 0.9rem;
+        }
+
+        .instructions {
+          padding: 15px;
+        }
+
+        .instructions h3 {
+          font-size: 1rem;
+        }
+
+        .instructions ol {
+          font-size: 0.85rem;
+          padding-left: 15px;
+        }
+
+        .url-display {
+          padding: 10px 12px;
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (min-width: 360px) and (max-width: 480px) {
+        .qr-container {
+          padding: 25px 15px;
+        }
+
+        .qr-code img {
+          width: 200px;
+          height: 200px;
+        }
+
+        .instructions {
+          padding: 18px;
+        }
+
+        .url-display {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (min-width: 481px) and (max-width: 768px) {
+        .qr-code img {
+          width: 220px;
+          height: 220px;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .qr-code img {
+          width: 250px;
+          height: 250px;
+        }
+
+        .generate-btn,
+        .download-btn {
+          max-width: 300px;
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+      }
+
+      @media (hover: none) and (pointer: coarse) {
+        .generate-btn,
+        .download-btn {
+          min-height: 52px;
+        }
+
+        .generate-btn:hover,
+        .download-btn:hover {
+          transform: none;
+        }
+
+        .generate-btn:active,
+        .download-btn:active {
+          transform: scale(0.98);
+        }
       }
     </style>
   </head>
